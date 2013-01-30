@@ -20,7 +20,7 @@ object Basic {
   class Redford extends Actor {
     def act() {
       while (true) {
-        println("hi red")
+        println("hi redness")
       }
     }
   }
