@@ -38,6 +38,8 @@ object SplunkPoll {
 
       out.close()
       socket.close()
+      val outputs = output.split("=")
+      println(outputs(1))
     } catch {
       case e: IOException =>
         e.printStackTrace()
