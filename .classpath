@@ -20,5 +20,6 @@
 	<classpathentry kind="lib" path="lib/slf4j-log4j12-1.7.2.jar"/>
 	<classpathentry kind="lib" path="lib/snmp4j-2.1.0-javadoc.jar"/>
 	<classpathentry kind="lib" path="lib/snmp4j-2.1.0.jar"/>
+	<classpathentry kind="lib" path="lib/vijava5120121125src.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
