@@ -1,0 +1,5 @@
+semicolons:
+	treats end-of-line as end of statements or an expression
+	can use semicolons if multiple statements are in the same line
+	
+	
