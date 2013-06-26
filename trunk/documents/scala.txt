@@ -1,5 +1,41 @@
-semicolons:
-	treats end-of-line as end of statements or an expression
-	can use semicolons if multiple statements are in the same line
+Type Less do More:
+	semicolons:
+		treats end-of-line as end of statements or an expression
+		can use semicolons if multiple statements are in the same line
+		case clause need not be covered with curly braces
+			case a => 
+				println
+				exit	
 	
+	variable declarations:
+		immutable variable is declared with val
+			must be initialized when declared
+		mutable variable is declared with var
+			array reference cannot be changed to point to a different array, but it can be change
+		immutable is consistent with the principles of pure functional programming
+	
+	method declarations
+		sequence
+			- start with a def keyword
+			- optional argument list
+			- colon character
+			- return type
+			- equal sign
+			- method body
+		if a method body has more than one expression, should be surrounded with curly braces
+		if a method body has only one expression, curly braces can be omitted
+		
+		method default and named arguments
+			default values for parameters can be defined
+				def function(param1: type, param2: String = " "): Unit = {}
+				can declare
+					def join(first: String , second: String = "not given"): Unit = println("hello " + first + second)
+				and call
+					join("murali") will give hello murali not given
+			named arguments
+				
+				
+			
+		
+			
 	
