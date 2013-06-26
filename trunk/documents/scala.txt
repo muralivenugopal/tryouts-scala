@@ -33,6 +33,66 @@ Type Less do More:
 				and call
 					join("murali") will give hello murali not given
 			named arguments
+				name of the variable can be mentioned when calling the method
+				advantages
+					- the names suggests the purpose of the parameters
+					- the order of the params can be changed when they are named
+				can call
+					join(second="venu", first="murali")
+				limitations: once a parameter is named, the following parameters should also be named
+		nesting method definitions
+			methods can be inside methods
+			a nesed method is only visible inside the enclosed method
+			variables shadowing and maksing applies to nested methods
+
+		type inference
+			scala supports type inference
+			there is not need to specify type signatures for variables and method return types
+				val age=32, val name="murali" will automatically find their types
+			still, type annotations has to be used for explicit type declarations like HashMap<Integer, String>
+			still, method parameters should be annotated with types, that's why local type inference
+			explicit type annotations should be provided for the following scenarios
+				- variable declared without initializing, var name: String, var age: Int
+				- all method parameters
+				- method return types should be annotated, if
+					- when u explicitly call return in a method
+					- when a method is recursive
+					- when a method is overloaded and one fo the method is calling other
+				- when is inferred type is more general than you inteded, eg Any
+		literals
+			defn: literals is a notation for representing fixed values in source code. eg. constants
+			integer literals
+				- decimal : 0 or a non-zero digit followed by zero or more digits 0-9 eg: 0, 23, 213
+				- hexa decimal: 0x followed by one or more hexa decimal digits 0-9 A-F a-f eg: 0xaf83 
+				- octal: 0 followed by one or more octal digits 0-7 eg: 034
+			float literals
+				integer followed by . followed by integer
+				Float is a 32 bit single precision binary floating-point values
+				Double is a 64 bit double precision binary floating-point values
+			boolean literals
+				true or false
+			character literals
+				is either a printable unicode character or an escape sequence, within single quotes
+				'A', '\n'
+				\b \u0008 Backspace (BS)
+					\t \u0009 Horizontal tab (HT)
+					\n \u000a Line feed (LF)
+					\f \u000c Form feed (FF)
+					\r \u000d Carriage return (CR)
+					\" \u0022 Double quote (")
+					\’ \u0027 Single quote (’)
+					\\ \u0009 Backslash (\)
+			string literals
+				either enclosed in double or triple quotes
+				double quotes: should escapte special characters
+				triple quotes: need not escapte them, can be just part of the string
+			symbol literals
+				is a single quote followed by a letters and followed by digits eg: 'a
+
+
+
+
+
 				
 				
 			
