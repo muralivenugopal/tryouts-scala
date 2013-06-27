@@ -165,3 +165,22 @@ Type Less do More:
 			difference between java and scala
 				java calls it generics", scala calls it "paramerized types"
 				java uses angle brackes <>, scala uses square brackes []
+				in/co/contra variance supported // #### need to be looked into
+			abstract class // #### need to be looked into
+		
+		reserved keywords
+			break and continue are not used in scala // have to find it
+			
+
+Rounding out the essentials
+	Operators are methods in scala
+		all operators are actually methods
+		scala allows non-alphanumeric method names
+		exclusions are:
+			parenthetical characters () {} []
+			delimeter characters ` ' " . ; ,
+			reserved keywords cannot be used
+			pattern matching
+				token begining with lower case are 
+
+
