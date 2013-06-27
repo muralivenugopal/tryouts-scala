@@ -88,14 +88,80 @@ Type Less do More:
 				triple quotes: need not escapte them, can be just part of the string
 			symbol literals
 				is a single quote followed by a letters and followed by digits eg: 'a
-
-
-
-
-
-				
-				
-			
 		
-			
-	
+		tuples
+			grouping of two or more items
+			commma separated within paranthesis eg: (x1, x2,...., x22)
+			type of elements can be mixed of different types
+			class of type scala.TupleN, where N is number of items in tuples
+			N can range from 1 to 22, cannot be 0
+			tuples are immutable
+			eg:
+				def tupleator(x1: Any, x2: Any, x3: Any) = (x1, x2, x3)
+				val t = tupleator("hi", !, 2.33), will assign t the whole tuple
+				val t(t1, t2, t3) = tupleator("hi", !, 2.33), will extract the tuples and assing to t1, t2 and t3 directly
+			ways to define tuple
+				-> can be used also: 1 -> 2 will give (1,2)
+				Typle2(1,2)
+				Pair(1,2)
+
+		Option, Some and None
+			Option is the parent class, Some and None are child classes
+			java returns null when there is nothing to return, but null is a keyword not an object. so no method can be called.
+			why return keyword when an object is expected
+			when there is no value use None, where thers is a values use Some, which wraps the value
+			None is declared as an Object, singleton.
+			Collections by default returns Option type, but it doesn't store Option, it just wraps the value into Options (Some/None) upon retrivel
+			using getOrElse returns the value Option if it's a Some instance or will return the second argument passed to getOrElse it it's None
+		
+		Organizing code: Files and Namespaces
+			File name doesn't have to match the type names
+			package structure doesn't have to match the directory structure
+			eg:
+				package murali {
+					package messages {
+						package send {
+							case class request(name: String)
+						}
+						package receive {
+							case class response(age: Int)
+						}
+					}	
+				}
+				the code can be saved in a file called "test.scala"
+			methods in packages can refer packages and classes from it's siblings
+		
+		Importing types and their members
+			import java.awt._ - import all types in the package using _ as a wildcard
+			import java.io.File - import individual type by specifying it's name
+			import java.io.File._ - import all the static methods and fields, bascially a static import
+			import java.util.{HashMap, Map} - import only specific types in a package instead of all
+			features:
+				we can put import statement almost anywhere
+				imports can be made within a functions, which cannot be accessed out of the block
+					this puts the import statement more closer to its usage
+				imports can be renamed
+				eg:
+					def test = {
+						import java.math.BigInteger {
+							ONE => _, // makes it invisible in the import scope, ie. ONE is not imported
+							TEN, // no renaming is done
+							ZERO => javazero // aliased
+						}
+					}
+			imports are relative
+				import scala.collections.mutable._
+				import collections.immutable._ // since scala is already imported
+				package scala.actors {
+					import remote._
+				} // we are in the scope of scala actors
+			instead of relative, to use absolute path use _root_.
+		
+		Abstract and Parameterized types
+			Java generics intro:
+				Generic methods: a single method that will accept more than one type of parameters
+				Bounded type parameters: a method that will accept only paraemters of certain types. Like Integers and it's sub types (Float, Double,Long, Short) and not String
+				Generic class: // not clear
+			difference between java and scala
+				java calls it generics", scala calls it "paramerized types"
+				java uses angle brackes <>, scala uses square brackes []
