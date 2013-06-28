@@ -207,22 +207,22 @@ Rounding out the essentials
 		for (breed <- dogbreed)
 			println(breed)
 		<- , left-arrow operator is called generator, cos it is generating individual values breed from collection dogbreed
-	filtering
-		for (breed <- dogbreed if breed.contains("lab")) println(breed)
-			to add more than one filter, separate them with semicolons
-	yielding
-		yield keyword generates new collections with the for comprehension
-		val breeds = for {breed <- dogbreed} yield breed
-			here, every loop of for will return breed which will be accumulated as a list in breeds
-		type of the yield collections is of type iterated collection
-		for expressions can be defined with
-			paranthesis - semicolon is required to delimit filters
-			curl braces - semicolon is not required to delimit filters
-	expanded scope
-		for {
-			breed <- dogbreeds
-			upcasebreed = breed.toUpperCase()
-			} prinln upcasebreed
-		here, upcasebreed need not be declared and its available within the scope of the for block
-      
-      
+		filtering
+			for (breed <- dogbreed if breed.contains("lab")) println(breed)
+				to add more than one filter, separate them with semicolons
+		yielding
+			yield keyword generates new collections with the for comprehension
+			val breeds = for {breed <- dogbreed} yield breed
+				here, every loop of for will return breed which will be accumulated as a list in breeds
+			type of the yield collections is of type iterated collection
+			for expressions can be defined with
+				paranthesis - semicolon is required to delimit filters
+				curl braces - semicolon is not required to delimit filters
+		expanded scope
+			for {
+				breed <- dogbreeds
+				upcasebreed = breed.toUpperCase()
+				} prinln upcasebreed
+			here, upcasebreed need not be declared and its available within the scope of the for block
+	Other looping constructs
+		while loops
