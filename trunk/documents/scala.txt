@@ -184,46 +184,45 @@ Rounding out the essentials
 				token begining with lower case are parsed as variable identifiers
         token begining with upper case are parased as constant identifiers
 
-  Syntactic sugar
-    ! is just an other method
-    \ and \\ are just methods in scala.xml.NodeSeq
-  
-  Method without paranthesis and donts
-    if a method takes no parameters, it can be called without paranthesis
-    when calling a method without or with one parameter the prefixing dot can be avoided
-  Operator precedence
-    all letters, |, ^, &, <>, =!, :, +-, */%
-  
-  if statements
-    if is an expression itself, hence will return a value
-      eg; val path = if (file.exists()) {
-                get path }
-                else {
-                  create file
-                  get path }
-          path will have the value of the file path
-      using path again will not evaluate the if expression again
-  for comprehansion
-    for (breed <- dogbreed)
-      println(breed)
-      <- , left-arrow operator is called generator, cos it is generating individual values breed from collection dogbreed
-    filtering
-      for (breed <- dogbreed if breed.contains("lab")) println(breed)
-      to add more than one filter, separate them with semicolons
-    yielding
-      yield keyword generates new collections with the for comprehension
-      val breeds = for {breed <- dogbreed} yield breed
-        here, every loop of for will return breed which will be accumulated as a list in breeds
-        type of the yield collections is of type iterated collection
-    for expressions can be defined with
-      paranthesis - semicolon is required to delimit filters
-      curl braces - semicolon is not required to delimit filters
-    expanded scope
-      for {
-        breed <- dogbreeds
-        upcasebreed = breed.toUpperCase()
-        } prinln upcasebreed
-      here, upcasebreed need not be declared
-      its available within the scope of the for block
+	Syntactic sugar
+		! is just an other method
+		\ and \\ are just methods in scala.xml.NodeSeq
+
+	Method without paranthesis and donts
+		if a method takes no parameters, it can be called without paranthesis
+		when calling a method without or with one parameter the prefixing dot can be avoided
+		Operator precedence
+		all letters, |, ^, &, <>, =!, :, +-, */%
+
+	if statements
+		if is an expression itself, hence will return a value
+			eg; val path = if (file.exists()) {
+					get path }
+				else {
+					create file
+					get path }
+			path will have the value of the file path
+			using path again will not evaluate the if expression again
+	for comprehansion
+		for (breed <- dogbreed)
+			println(breed)
+		<- , left-arrow operator is called generator, cos it is generating individual values breed from collection dogbreed
+	filtering
+		for (breed <- dogbreed if breed.contains("lab")) println(breed)
+			to add more than one filter, separate them with semicolons
+	yielding
+		yield keyword generates new collections with the for comprehension
+		val breeds = for {breed <- dogbreed} yield breed
+			here, every loop of for will return breed which will be accumulated as a list in breeds
+		type of the yield collections is of type iterated collection
+		for expressions can be defined with
+			paranthesis - semicolon is required to delimit filters
+			curl braces - semicolon is not required to delimit filters
+	expanded scope
+		for {
+			breed <- dogbreeds
+			upcasebreed = breed.toUpperCase()
+			} prinln upcasebreed
+		here, upcasebreed need not be declared and its available within the scope of the for block
       
       
