@@ -206,7 +206,7 @@ Rounding out the essentials
 	for comprehansion
 		for (breed <- dogbreed)
 			println(breed)
-		<- , left-arrow operator is called generator, cos it is generating individual values breed from collection dogbreed
+		<- , left-arrow operator is called generator, cos it is generating individual values breed from collection, list here, dogbreed
 		filtering
 			for (breed <- dogbreed if breed.contains("lab")) println(breed)
 				to add more than one filter, separate them with semicolons
@@ -225,4 +225,121 @@ Rounding out the essentials
 				} prinln upcasebreed
 			here, upcasebreed need not be declared and its available within the scope of the for block
 	Other looping constructs
-		while loops
+		while loops and do while are normal as java
+	
+	Generator expressions
+		for (i <- 1 to 100 ) println(i)
+			here 1 an Int is converted implicitly into RichInt
+		for (i <- 1 until 10) println(i), is also possible
+	
+	Conditional operators
+		&& and
+		|| or
+		> greater than
+		>= greater than or equal to
+		< less than
+		<= less than or equals
+		== equals
+		!= not equals
+	
+	pattern matching
+		it's a basic C based case clause, but with steroids
+		in C, only values of variables are matched.
+		in scala, you can
+			include types
+			wildcards, _ means anything not defined in the above case clause, similar to default clause
+			sequences
+			regural expressions
+			deep inspection of object's variables
+		matching based on types
+			case i: Int => println(i)
+			here it's looks for Int and if it's available, it is assinged and acessed using the variable declare,here i
+			case other is default clause
+		matching on sequence
+			matching against the length and content of a sequence (collection/list, here)
+
+			case List(_, 3, _, _) => println(got three) // looks for a list with four elements in it and the second element should be 3
+			case List(_*) => // a list with 0  or more elements
+			case head :: tail =>  
+				// splits the list into two, first element assigned to head and rest assigned to tail
+				it uses the :: method which prepends the provided list to a list
+		matching on tuples
+			tuples can be matched with the syntax when tuples are declared, like
+				val ab = (one, two) // ab is a tuple
+			case (one, two) if one == 1 => // a guard is used, the if condition after the tuple
+				the guard is evaluated when matching
+		matching on case classes
+			case class Person(name: String, age: Int)
+				case Person("murali", 30) => // looks for exact values for name and age variables in case class
+				case Person(name, age) => // looks for case class Person and de constructs the case class and assign the variables accoredingly 
+		matcing on regular expressions
+			// not interesetd to learn for now, just skipping it
+		binding nested variables in case clause
+			case (p @ Person("murali", _)) => println("age = "+ p) // not so clear
+			case (p: Person) => println(p.name + p.age) // if not matching in Person, just declare a variable for person and use it
+		cases in pattern matching are execute in order
+		if first case is broader then the second one, the compiler will generate an unreachable error
+		use a "default" case at the end, either by 
+			underscore (_) or a meaningfully named variable
+			the variable should have no explicit type, it should be of type Any
+		using try, catch and finally clauses
+			// to do ###
+
+Introducing Traits
+
+Basics of Object Oriented Programming in Scala
+	scala is object oriented like java, python, ruby, smalltalk and others
+	class and objects basics
+		class starts with keyword "class"
+		additional keywords
+			final - prevents creation of derived classes
+			abstract - indicate the class can't be instantiated and that it dont have concrete definitions
+		an instance can refer to itself using this keyword
+		in a class method starts with a def keyword
+		overloaded methods does exist in scala, as long as their full signature is unique
+		new keywords should be used to create instances of reference types
+		new keyword should not be used when creating instance of anyval
+	parent classes
+		scala supports single inheritance not multiple inheritance
+			a child class can have one and only base/parent class
+		extends keyword is used define a parent class
+			extends can also be used,
+				implementing a trait
+				child trait extending a parent trait
+				traits extends a class, yes in scala traits can extend classes
+		if no extends keyword is used, it's a child of AnyRef a direct child of Any
+	constructors in scala
+		primary constructor - the entire body of the class or the default constructor
+			any parameter required by the constructor as listed after the class name
+			all the parameters of the primary constructor are by default val, immutable
+				compiler generates a private field, along with getter method
+			if a parameter is var, mutable an addition method name_ is generated, which is a setter method
+			to avoid generating accessor methods, the keyword private should be used
+			scala uses uniform access principle, where fields and getter/setters methods will have the same name
+			when an instance of class is created, each field corresponding to a parameter will be automtically initialized
+		auxillary construtor - is a constructor with non default parameters, basically operator overloading
+			auxillary constructors as named as this
+			to avoid infinite recursion, scala allows an auxillary constructor to invoke an other constructor declare before it
+		advantages of scala rules on constructors
+			elimination of duplicates - auxillary constructors invoke the primary constructors avoid duplicates of construction logic
+			code size redution - scala automatically generates accessor methods for val and var
+		dis-advantages
+			only one primary constructor should be used
+	constructors of parent class // ####
+	nested class // ####
+	visibility rules
+		public visibility, any declarations without visibility is public by default
+		hence, there is not public keyword in scala
+
+Advanced Object Oriented programming in scala
+	classes and traits can declare abstract members
+		fields, methods and types
+	when overriding scala requires a "override" keyword
+	advantages of using override keywords
+		- it catches misspelled members
+		- parent and child cannot have the same abstract member name
+		- reminds the progrmmer what should be orveridden and what not
+	an optional annotation can also be used
+		@Override, which can catch errors of misspelled names
+	attempting to override final declarations will result in error
+	
