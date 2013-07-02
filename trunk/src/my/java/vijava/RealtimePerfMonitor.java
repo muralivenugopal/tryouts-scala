@@ -41,6 +41,7 @@ import com.vmware.vim25.PerfMetricSeriesCSV;
 import com.vmware.vim25.PerfProviderSummary;
 import com.vmware.vim25.PerfQuerySpec;
 import com.vmware.vim25.PerfSampleInfo;
+import com.vmware.vim25.mo.Folder;
 import com.vmware.vim25.mo.InventoryNavigator;
 import com.vmware.vim25.mo.ManagedEntity;
 import com.vmware.vim25.mo.PerformanceManager;
@@ -56,18 +57,26 @@ import com.vmware.vim25.mo.ServiceInstance;
 
 public class RealtimePerfMonitor {
 	public static void main(String[] args) throws Exception {
-		if (args.length != 4) {
+/*		if (args.length != 4) {
 			System.out.println("Usage: java RealtimePerfMonitor "
 					+ "<url> <username> <password> <vmname>");
 			return;
 		}
 
 		ServiceInstance si = new ServiceInstance(new URL(args[0]), args[1],
-				args[2], true);
+				args[2], true);*/
+		
+		
+		ServiceInstance si = new ServiceInstance(new URL("https://119.227.201.83/sdk"), "CIDev", "Cl0udde^", true); // vsphere login
 		
 		System.out.println();
+		
+		Folder rootFolder = si.getRootFolder();
+		ManagedEntity[] vms = new InventoryNavigator(rootFolder)
+		.searchManagedEntities(new String[][] { { "VirtualMachine",
+				"name" }, }, true);
 
-		String vmname = args[3];
+		String vmname = vms[17].getName();
 		ManagedEntity vm = new InventoryNavigator(si.getRootFolder())
 				.searchManagedEntity("VirtualMachine", vmname);
 
@@ -110,7 +119,7 @@ public class RealtimePerfMonitor {
 		qSpec.setMaxSample(new Integer(maxSample));
 		// qSpec.setMetricId(metricIds);
 		// optionally you can set format as "normal"
-		qSpec.setFormat("csv");
+//		qSpec.setFormat("csv");
 		// set the interval to the refresh rate for the entity
 		qSpec.setIntervalId(new Integer(interval));
 
