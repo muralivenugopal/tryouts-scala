@@ -13,5 +13,10 @@ object CreateFile {
     val writer = new PrintWriter(new File("/tmp/" + fileName))
     writer.write("Hello murali " + Calendar.getInstance().getTime() + "\r")
     writer.close()
+    
+    
+    val lines = scala.io.Source.fromFile("/tmp/" + fileName).mkString
+    println(lines);
+    
   }
 }
