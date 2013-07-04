@@ -179,6 +179,8 @@ public class VMMonitor {
 		PerfCounterInfo cinfo[] = null;
 		cid[0] = counterId;
 		cinfo = perfMgr.queryPerfCounter(cid);
+		System.out.println();
+		System.out.println("summary : " + cinfo[0].getNameInfo().summary);
 		return cinfo[0].getGroupInfo().label + "/" + cinfo[0].getNameInfo().label + " in "+ cinfo[0].getUnitInfo().label + "::";
 
 	}
