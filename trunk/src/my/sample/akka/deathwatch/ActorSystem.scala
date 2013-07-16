@@ -44,7 +44,7 @@ class Writer extends Actor {
     case Hi => println(sender.path.name + " says Hi"); sender ! Hello
     case Hello => println(sender.path.name + " says Hello")
 //    case Sleep => context.system.scheduler.scheduleOnce(Duration(1000, TimeUnit.MILLISECONDS), context.self, Write)
-    case Sleep => context.system.scheduler.scheduleOnce(2 seconds, self, Write)
+//    case Sleep => context.system.scheduler.scheduleOnce(2 seconds, self, Write)
   }
 
   override def preStart() {
