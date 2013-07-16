@@ -1,0 +1,126 @@
+sbt tutorial:
+	
+set up.
+download and install manually.
+	download sbt-launch.jar to a folder called bin in ~ directory
+	create a shell script named sbt and create a launch command, like this
+		java -Xms512M -Xmx1536M -Xss1M -XX:+CMSClassUnloadingEnabled -XX:MaxPermSize=384M -jar `dirname $0`/sbt-launch.jar "$@"
+		adjust your max memory based on available ram
+		make is executable, chmod 755 sbt
+working
+	sbt is similar to play framework
+	create a directory, cd into it and launch sbt tool
+	ex:
+		mkdir hello
+		cd hello
+		echo 'object Hi { def main(args: Array[String]) = println("Hi!") }' > hw.scala
+		sbt
+			> run
+		or, sbt run
+		it's exactly like play console. play framework has renamed the command sbt to play ;-)
+	can also launch scala console
+
+build definition
+	basic build definitions should be in a file called build.sbt
+	each definitions should have a blank line inbetween
+	build properties
+		in base directory, project/build.properties should have all the properties
+		ex.  sbt.version=0.12.0
+
+file and directory layout
+	base directory: where .sbt file is present, as in maven pom.xml
+	sbt uses the maven directory structure
+		src/
+			main/
+				java/
+				scala/
+				resources/
+			test/
+				java/
+				scala/
+				resources/
+	other directories and hidden directories will ignored
+	sbt definitions
+		files other than build.sbt can be present in 
+			$basedir/project/Build.scala
+		also, .sbt files can be present in project directory
+			but they are not same as build.sbt in $basedir
+	targets
+		generated class files, jars files should be in 
+			$basedir/target
+
+running
+	sbt command in basedir will start intereactive mode
+		commands: compile, run, exit / Ctrl D
+	batch mode
+		same like maven, we can run multiple commands as a batch
+			sbt clean compile
+			arguments will be enclosed in quotes
+				sbt clean compile "test-only TestA TestB"
+	continous build and test
+		a ~ prepended to compile command, like ~ compile
+		will automatically compile when there is a change in source file or file system below basedir
+		to stop continous command, press enter again
+	common commands
+		clean, compile, test, console, run <argument>, package, help <command>, reload
+	tab completion, is present in intereactive mode only
+	command history, 
+
+build definition
+	can contain,
+		.sbt in basedir
+		.scala in basedir/project direc
+	.scala will be used only when .sbt cannot do something. like, 
+		add new settings or tasks(customize sbt)
+		define nested sub-projects
+	either one or both can be used
+	convention is, using .sbt mostly and .scala for specific cases
+
+what is a build definition
+	after initial steps, examining the project and executing the build files, sbt comes up with a immutable Map with key values pairs
+		name=projectName
+		...
+	the scala object to refer these definitions is Setting[T], of type T
+	a Setting describes Transformation to the Map. 
+	adding or modifying this Map will yield a new Map, as it is immutable
+
+build.sbt definitions of settings
+	defines a Seq[Setting[_]]
+	each entry should be separated by a blank line
+	.scala conversion
+		prepending with Seq(, and appeding with )
+		replacing blank lines with comma, makes it a .scala file
+	still var, object, class or def are not allowed in .scala definitions
+	left hand side should have keys, Keys are subtype of setting, with a method :=
+	so, setting a key's values is
+		name := "hello" or name.:=("hello"), but name := "hello" should be used
+	types of keys
+		SettingKey[T], value will be computed once
+		TaskKey[T] - value will be computed each time you run compile in the prompt, resulting side effects
+		InputKey[T] - a TaskKey with inputs
+	TaskKey will define a task
+		it's value will be the ouput, ex. package key will have jar file as it's value
+	adding library dependencies
+		two ways can be used
+			place the jars in basedir/lib/ (unmanaged)
+			place a key libraryDepencies in .sbt (managed)
+				like libraryDependencies += "org.apache.derby" % "derby" % "10.4.1.3"
+				+=, appends to the key's old value rather than replacing it
+				%, construct an Ivy module ID from strings 
+
+dependencies
+	unmanaged dependencies
+	managed dependencies
+		sbt uses Apache Ivy which is similar to Maven and Ivy
+		dependant libraries are identified by Maven coodinates
+			groupID % artifactID % revision
+		in .scala, all dependencies can be added in one shot
+			libraryDependencies ++= Seq(
+				groupID % artifactID % revision,
+				groupID % otherID % otherRevision
+			)
+		groupID %% artifactID % revision
+			this will scala version to your project's artifact name
+		all the jars will be downloaded to ~/.ivy2/cache	
+		
+		
