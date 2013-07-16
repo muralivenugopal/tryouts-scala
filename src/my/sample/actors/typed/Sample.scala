@@ -1,6 +1,6 @@
-package my.sample.actors.typed
+/*package my.sample.actors.typed*/
 
-import akka.actor._
+/*import akka.actor._
 import akka.dispatch.Future
 import akka.pattern.ask
 import akka.util.Timeout
@@ -54,4 +54,4 @@ object Main extends App {
       system.shutdown()
   }
 
-}
+}*/
