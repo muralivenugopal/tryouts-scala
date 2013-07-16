@@ -1,4 +1,4 @@
-package my.sample.future
+/*package my.sample.future
 
 import akka.dispatch.Future
 import akka.dispatch.Await
@@ -8,13 +8,13 @@ object FutureSample {
 
   def main(args: Array[String]): Unit = {
     
-/*    val future = Future {
+    val future = Future {
       
       "hello" + "murali"
-    }*/
+    }
     
 //    val await = Await.result(future, 1 second)
     
   }
 
-}
+}*/
