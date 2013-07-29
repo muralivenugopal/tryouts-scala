@@ -99,7 +99,19 @@ public class VMMonitorSpecific {
 		 * pmis[i].getInstance()); }
 		 */
 
-		PerfQuerySpec qSpec = createPerfQuerySpec(vm, pmis, 1, refreshRate);
+		PerfMetricId metric= new PerfMetricId();
+		metric.setCounterId(2);
+		metric.setInstance("*");
+		
+		PerfMetricId metric1= new PerfMetricId();
+		metric1.setCounterId(148);
+		metric1.setInstance("*");
+		
+		PerfMetricId[] metrics = new PerfMetricId[2];
+		metrics[0] = metric;
+		metrics[1] = metric1;
+		
+		PerfQuerySpec qSpec = createPerfQuerySpec(vm, metrics, 1, refreshRate);
 
 		PerfEntityMetricBase[] pValues = perfMgr.queryPerf(new PerfQuerySpec[] { qSpec });
 		System.out.println(pValues);
@@ -117,7 +129,8 @@ public class VMMonitorSpecific {
 		// set the maximum of metrics to be return
 		// only appropriate in real-time performance collecting
 		qSpec.setMaxSample(new Integer(maxSample));
-		// qSpec.setMetricId(metricIds);
+		
+		 qSpec.setMetricId(metricIds);
 		// optionally you can set format as "normal"
 		// qSpec.setFormat("csv");
 		// set the interval to the refresh rate for the entity
