@@ -1,1 +1,43 @@
 traits
+	traits are fundamental unit of code reuse in scala
+	trait encapsulates method and field definitions
+	unlike class inheritance, any number of traits can be mixed in
+
+	how traits work
+		a trait definition looks exactly like class definition, except that it has the word trait instead of class
+		trait like classes in scala implicitly inherits AnyRef
+		mixin in a trait uses 'extends' keyword
+		mixin implicitly inherits traits superclass
+		methods inherited from from a trait can be used just like using a superclass method
+		trait can also be used a type
+			eg: val test: mytrait = ...
+			the type of a variable is of type trait
+			the variable could be assigned with any object of whose type is of the trait
+			
+	back reference: java abstract class
+		abstract classes are declared with 'abstract' keyword
+		used to define common characteristics of subclasses
+		cannot be instantiated, can only used as a superclass
+		can have abstract methods
+			not a concrete method
+			doen't have implementation/definition
+			must end with a semicolon, instead of code block
+			abstract methods are used to provide a template for the classes that inherit the abstract methods
+		if a class has an abstract method, it should be declared as abstract class
+		like normal classes, abstract classes can have concrete methods, abstract methods and both
+		abstract classes are used to provide a template or design for concrete subclasses down the inheritance tree
+		a class extending a abstract class should implement the abstract methods
+		an implemented method in abstract class can be overridden
+		all the methods in a class should be concrete for it to be instantiated
+		extending subclasses can have more fields and methods on top of abstract class
+			abstract classes make sure that subclasses will have the basic set of fields and methods declared in abstract class
+
+	back reference: java interface
+		
+			
+		
+		
+		
+			
+
+
