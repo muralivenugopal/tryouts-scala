@@ -1,0 +1,976 @@
+scala> :history 1000
+  1  :help
+  2  3+4
+  3  4+5
+  4  res1 + 10
+  5  3/4
+  6  3.0/4
+  7  res4 = 5
+  8  var total = 0
+  9  total = total + res4
+ 10  total = total + res3
+ 11  total = total + res2
+ 12  3 + 4
+ 13  res0 + 5
+ 14  3 / 4
+ 15  res9
+ 16  3.0 / 4
+ 17  res2 = 5
+ 18  val c = 123
+ 19  var total = c + 10
+ 20  ()
+ 21  ("hello")
+ 22  :keybindings
+ 23  :help
+ 24  val foo = <person><name type="first">Murali</name><name type="last">Venugopal</name><age>30</age></person>
+ 25  foo.txt
+ 26  val name=murali
+ 27  val name="murali"
+ 28  val namef="murali"
+ 29  val namel="venugopal"
+ 30  val foo1 = <person><name type="first">{namef}</name><name type="last">{namel}</name><age>31</age></person>
+ 31  foo.text
+ 32  foo.txt
+ 33  foo.text
+ 34  foo \ "person"
+ 35  val xml = """
+ 36  <index>
+ 37  <object oid="1.2.3.4" name="input"/>
+ 38  <object oid="5.6.7.8" name="output"/>
+ 39  </index>
+ 40  """
+ 41  val x = XML.loadString(xml)
+ 42  import scala.xml._
+ 43  val x = XML.loadString(xml)
+ 44  val pollOids = x \ "object"
+ 45  pollOids foreach { o => o \ "@name" }
+ 46  pollOids foreach { o => println(o \ "@name") }
+ 47  var objects = new Queue[Node]()
+ 48  import scala.collection.Queue
+ 49  import scala.collection.mutable.Queue
+ 50  var objects = new Queue[Node]()
+ 51  pollOids foreach { o => objects += <ob  name={o \ "@name"} /> }
+ 52  objects
+ 53  exit
+ 54  val xml = """
+ 55  <Table>:q!
+ 56  val one = 1000L
+ 57  exit
+ 58  scala hw
+ 59  scala Hi
+ 60  scalac hw.scala
+ 61  exit
+ 62  val jsonObject = scala.io.Source.fromFile("/home/murali/Documents/cloud/template.json").mkString
+ 63  val jsonString = scala.io.Source.fromFile("/home/murali/Documents/cloud/template.json").mkString
+ 64  val jsonObject = JSON.parseFull(jsonString)
+ 65  import scala.util.parsing.json._
+ 66  val jsonObject = JSON.parseFull(jsonString)
+ 67  val jsonObject = JSON.parseFull(jsonString).get
+ 68  val jsonString = scala.io.Source.fromFile("/home/murali/Documents/cloud/template1.json").mkString
+ 69  val jsonObject = JSON.parseFull(jsonString)
+ 70  val jsonString = scala.io.Source.fromFile("/home/murali/Documents/cloud/template1.json").mkString
+ 71  val jsonObject = JSON.parseFull(jsonString)
+ 72  val jsonString = scala.io.Source.fromFile("/home/murali/Documents/cloud/template1.json").mkString
+ 73  val jsonObject = JSON.parseFull(jsonString)
+ 74  val jsonObject = JSON.parseFull(""" { "name": "murali", "age":"30" } """)
+ 75  val jsonString = scala.io.Source.fromFile("/home/murali/Documents/cloud/template1.json").mkString
+ 76  val jsonObject = JSON.parseFull(jsonString)
+ 77  val jsonString = scala.io.Source.fromFile("/home/murali/Documents/cloud/template_3.json").mkString
+ 78  val jsonObject = JSON.parseFull(jsonString)
+ 79  val map = jsonObject.get
+ 80  val map = jsonObject.get.asInstanceOf[Map[java.util.String, Any]]
+ 81  val map = jsonObject.get.asInstanceOf[Map[String, Any]]
+ 82  map("params")
+ 83  map("params").asInstanceOf[List[Any]]
+ 84  val params = map("params").asInstanceOf[List[Any]]
+ 85  val param = params(0)
+ 86  val param = params(0).asInstanceOf[Map[String, Any]]
+ 87  import scala.collection.mutable.MutableList
+ 88  var params: MutableList[Int] = MutableList()
+ 89  params += 1
+ 90  params += 2
+ 91  params += 3
+ 92  params += 4
+ 93  params += 5
+ 94  params("3")
+ 95  params(3)
+ 96  params.find(2)
+ 97  params.find(2=> 1)
+ 98  params.exists(2)
+ 99  params
+100  params.exists(2)
+101  params.exists(=2)
+102  params.exists(_2)
+103  params.exists(_=2)
+104  params.exists(_<2)
+105  params contains 2
+106  class User
+107  class User(name: String, age: Int)
+108  val users : Array[User] = User("murali", 30)
+109  case class User(name: String, age: Int)
+110  val users : Array[User] = User("murali", 30)
+111  val users : Array[User] = new Array[User](1) User("murali", 30)
+112  val users : Array[User] = new Array[User](1) <- User("murali", 30)
+113  val users : Array[User] = new Array[User](1) <= User("murali", 30)
+114  val users : Array[User] = Array(User("murali", 30))
+115  users(0)
+116  val users: HashMap[String, User] = Map("1", User("murali", 30) )
+117  val users: HashMap[String, User] = Map["1", User("murali", 30)]
+118  val users: HashMap[String, User] = Map["1" => User("murali", 30)]
+119  val users: HashMap[String, User] = Map("1" => User("murali", 30))
+120  var users: HashMap[String, User] = _
+121  var users: Map[String, User] = _
+122  var users: HashMap[String, User] = _
+123  import scala.collection.mutable.HashMap
+124  var users: HashMap[String, User] = _
+125  users += "1" -> User("murali", 30)
+126  users += ("1" -> User("murali", 30))
+127  users += Map("1" -> User("murali", 30))
+128  users += "1" -> User("murali", 30)
+129  val users = scala.collection.mutable.Map[String, User]()
+130  users += "1" -> User("venu", 40)
+131  users += "2" -> User("murali", 30)
+132  users("1")
+133  users("1").get
+134  users("4")
+135  users.get("1")
+136  users.getOrElse("1")
+137  users.get("4")
+138  val value = User("test", 1)
+139  User("test1", 2)
+140  val value = null
+141  val value = User("test", 1)
+142  val value = null
+143  val value = User("test", 3)
+144  value = User("test", 3)
+145  users
+146  users += "3" -> User("raji", 35)
+147  users.remove(2)
+148  users.remove("2")
+149  users
+150  users.get("1")
+151  users foreach { user =>
+152  println(user._1) }
+153  val users: List[User] = List()
+154  users += User("murali", 30)
+155  users ++ User("murali", 30)
+156  case class Param(name: String, age: Int, location: String)
+157  val par = Param("murali", 30, "chennai")
+158  println(par.name)
+159  println(par.age)
+160  println(par.loca)
+161  println(par.location)
+162  case class User(name: String, age: Int)
+163  val users = List(User("murali", 30), User("venu", 40), User("lachu", 26))
+164  users
+165  case class Age(age: Int)
+166  val ages = users.foreach println
+167  val ages = users.foreach{user => println(user)}
+168  val ages:List[Age] = users.foreach{user => user.age}
+169  val ages:List[Age] = users.map(x => Age(x.age))
+170  val cal: Calendar = Calendar.getInstance
+171  val cal = Calendar.getInstance
+172  import java.util.Calendar
+173  val cal = Calendar.getInstance
+174  cal.HOUR
+175  println(cal.HOUR)
+176  println(cal.DAY)
+177  val current = Calendar.getInstance.setTime(currentPollTime)
+178  val current = Calendar.getInstance.setTime(1373903483)
+179  val current = Calendar.getInstance
+180  current.setTime(1373903483)
+181  current.setTimeInMillis(1373903483)
+182  current
+183  current.HOUR
+184  current.get(HOUR)
+185  current.get(DAY)
+186  import java.util.Calendar._
+187  current.get(DAY)
+188  current.DAY
+189  DAY
+190  current.DAY
+191  current
+192  current.HOUR
+193  current.DATE
+194  current->DATE
+195  var cal = Calendar.getInstance
+196  cal.HOUR
+197  Calendar.HOUR
+198  Calendar.MINUTE
+199  Calendar
+200  cal
+201  cal.get(Calendar.HOUR)
+202  val cal = Calendar.getInstance
+203  cal.setTimeInMillis(371293800)
+204  cal
+205  cal.get(Calendar.HOUR)
+206  cal.setTimeInMillis(371293800000)
+207  cal.setTimeInMillis(371293800)
+208  cal.getTIme
+209  cal.getTime
+210  cal.setTimeInMillis(371293800)
+211  cal.getTime
+212  cal.setTimeInMillis(1373883683)
+213  cal.getTime
+214  cal.setTimeInMillis(1373883683000)
+215  val cal = Calendar.getInstance
+216  cal.getTimeInMillis
+217  cal.setTimeInMillis(1373886233393)
+218  cal.setTimeInMillis(1373886233)
+219  cal
+220  cal.getTimeInMillis
+221  cal.getTime
+222  cal.set(Calendar.HOUR, 5)
+223  cal.getTime
+224  cal.setTimeInMillis(System.currentMillis)
+225  import scala.collection.mutable.Map
+226  var map = Map[String, String]
+227  var map = Map[String, String]()
+228  map += "1" -> "one"
+229  map += "2" -> "two"
+230  map += "3" -> "three"
+231  map.get("3")
+232  map.get("3").get
+233  map.get("3").get._1
+234  val three = map.get("3").get
+235  val findVal = map.get("3").get
+236  map.remove("3")
+237  map
+238  map.remove("3")
+239  val s = "100"
+240  val i = s.toInt
+241  i + 1
+242  for (i <- 1 to 10)
+243  println(i)
+244  for (i <- 1 to 10)
+245  println(i+1)
+246  for (i <- 1 to 10)
+247  val ii = i
+248  val i: RichInt = 0
+249  history
+250  case class User(name: String, age: Int)
+251  val users = Map["1" -> User("murali", 30), "2" -> User("venu", 50)]
+252  val users = Map("1" -> User("murali", 30), "2" -> User("venu", 50))
+253  users.map 
+254  val test = "50"
+255  val lng = test.asInstanceOf[Long]
+256  val lng = test.toLong
+257  lng
+258  test
+259  lng.asInstanceOf[String]
+260  val any: Any
+261  val any: Any = "20"
+262  val lng = any.asInstanceOf[Long]
+263  val lng = any.asInstanceOf[Long].toLong
+264  val lng = any.asInstanceOf[String].toLong
+265  val lng = any.toString.toLong
+266  case class User(name: String, age: Int)
+267  val user: User = _
+268  val user: User = User
+269  val user: User = User("murali", 30)
+270  user = User("gopal", 50)
+271  import scala.util.parsing.json._
+272  user
+273  object User {
+274  def toJson = {
+275  println("{ name:" + name + ", age:" + age + "}")
+276  }
+277  object User {
+278  def toJson = {
+279  println("object method called")
+280  }
+281  case class User(name: String, age: Int)
+282  object User {
+283  def toJson = {
+284  println("object method called")
+285  }
+286  :paste
+287  case class User(name: String, age: Int)
+288  object User {
+289  def toJson = {
+290  println("object method called")
+291  }
+292  val user = User("test", 123)
+293  user.toJson
+294  import scala.util.parsing.json._
+295  import scala.io.Source._
+296  val jsonMap = JSON.parseFull(fromFile("/home/murali/Downloads/play/workspace/cacql/resources/val.json").mkString).get
+297  case class User(name: String, age: Int)
+298  case class Dept(name: String, users: List[User])
+299  val dept = Dept("finanec", List(User("murali", 30), User("darshan", 30)))
+300  dept
+301  val nobody = Dept("noone", null)
+302  nobody.users match {
+303  case null => println("no users")
+304  case users: List[User] => println(users)
+305  }
+306  dept.users match {
+307  case null => println("no users")
+308  case users: List[User] => println(users)
+309  }
+310  val key = "148/vm1"
+311  val ids = key.split("/")
+312  ids(0)
+313  val one = key.split("/")(1)
+314  val one = key.split("/")(0)
+315  val list = List("1", "2", "3")
+316  list("1")
+317  list.get("1")
+318  list("1")
+319  val inst = ""
+320  inst match {
+321  case "" => println("nothing")
+322  case instance: String => Println(instance)
+323  case _ => println("unknown")
+324  }
+325  inst match {
+326  case "" => println("nothing")
+327  case instance: String => println(instance)
+328  case _ => println("unknown")
+329  }
+330  val inst = "int"
+331  inst match {
+332  case "" => println("nothing")
+333  case instance: String => println(instance)
+334  case _ => println("unknown")
+335  }
+336  val inst = ""
+337  inst.length
+338  inst.length match {
+339  case 0 => println(0)
+340  case >0 => println(">")}
+341  val inst = ""
+342  val inst = "one/1"
+343  inst.split("/")
+344  val inst = "one"
+345  inst.split("/")
+346  val inst = "one/1"
+347  inst.split("/")(0)
+348  val inst = "one"
+349  inst.split("/")(0)
+350  case class User1(name: String, age: Int)
+351  case class User(name: String, age: Int)
+352  case class Age(age: Int)
+353  users = List(User("murali", 30), User("venugopal", 50), User("lachu", 25), User("sakthi", 27))
+354  val users = List(User("murali", 30), User("venugopal", 50), User("lachu", 25), User("sakthi", 27))
+355  users map {user => Age(user.age)}
+356  import com.codahale.jerkson.Json._
+357  case class User(name: String, age: Int)
+358  val users = List(User("murali", 30), User("venugopal", 50), User("lachu", 25), User("sakthi", 27))
+359  generate(users)
+360  val key = "one/1"
+361  val first = key.split("/")(0)
+362  val first = key.split("/")(1)
+363  val key = "one"
+364  val first = key.split("/")(0)
+365  val first = key.split("/")(1)
+366  val name = "murali"
+367  name.find("/")
+368  name.find('/')
+369  name.find("murali")
+370  name.contains("a")
+371  name.contains("s")
+372  import scala.util.parsing.json._
+373  val jsonMap = JSON.parseFull("{"name": "murali", "age": "30"}")
+374  val jsonMap = JSON.parseFull("""{"name": "murali", "age": "30"}""")
+375  jsonMap("name")
+376  jsonMap.get("name")
+377  jsonMap.get
+378  jsonMap.get.asInstanceOf[Map[String, String]]
+379  jsonMap.get.asInstanceOf[Map[String, String]]("name")
+380  jsonMap.get.asInstanceOf[Map[String, String]].get("name")
+381  jsonMap.get.asInstanceOf[Map[String, String]].get("name").get
+382  var name = null
+383  var name = jsonMap.get.asInstanceOf[Map[String, String]].get("name").get
+384  var name = name.contains("a")
+385  val jsonMap = JSON.parseFull("""{"name": "murali", "age": "30", "emails": ["yahoo": "uvan_murali", "gmail", "murali.venugopal"]}""")
+386  val jsonMap = JSON.parseFull("""{"name": "murali", "age": "30", "emails": [{"yahoo": "uvan_murali"}, {"gmail", "murali.venugopal"}]}""")
+387  import scala.util.parsing.json._
+388  val jsonMap = JSON.parseFull(fromFile("/home/murali/Downloads/play/workspace/CloudMon/resources/templates/vm_template.json").mkString).get.asInstanceOf[Map[String, Any]]
+389  import scala.io.Source._
+390  val jsonMap = JSON.parseFull(fromFile("/home/murali/Downloads/play/workspace/CloudMon/resources/templates/vm_template.json").mkString).get.asInstanceOf[Map[String, Any]]
+391  val jsonMap = JSON.parseFull(fromFile("/tmp/test.json").mkString).get.asInstanceOf[Map[String, Any]]
+392  val jsonMap = JSON.parseFull(fromFile("/home/murali/Downloads/play/workspace/CloudMon/resources/templates/vm_template.json").mkString).get.asInstanceOf[Map[String, Any]]
+393  val path = "/tmp/murali/test"
+394  val key = path.replaceAll("/", "_")
+395  def one = {
+396  println(1)
+397  def two = {
+398  println(2)
+399  }
+400  one
+401  case class Users(name: String, emails: Map[String, String])
+402  val users = Users("murali", Map("yahoo" -> "uvan_murali", "gmail" -> "murali.v"))
+403  users.emails.remove("gmail")
+404  val key = "disk_capacity"
+405  key match {
+406  case "disk*" => println ("disk")
+407  case "*capacity" => println("capacity")
+408  }
+409  key match {
+410  case "disk*" => println ("disk")
+411  case _ => println("noting" })
+412  key match {
+413  case "disk*" => println ("disk")
+414  case _ => println("noting" })
+415  key match {
+416  case "disk*" => println ("disk")
+417  case _ => println("noting") }
+418  key 
+419  val users = Users("murali", Map("yahoo" -> "uvan_murali", "gmail" -> "murali.v"))
+420  users.emails.map{entry => entry._2}
+421  val n = 0
+422  val d = 122
+423  val r = n / d
+424  val n = 1234007
+425  val r = n / d
+426  val name = "murali"
+427  name match {
+428  case String => println(name)
+429  }
+430  val name = null
+431  name match {
+432  case null => println("null")
+433  }
+434  val yes = true
+435  val status = yes match {
+436  case true => true
+437  case false => false
+438  }
+439  100 - 5 match {
+440  case >0 => true
+441  100 - 5 match {
+442  case i: Int if (i > 0) => true
+443  }
+444  100 - 5 match {
+445  case i: Int if (i > 0) => println("done")
+446  }
+447  val avail = () => {100 - 2}
+448  () => 100 - 2
+449  val avail = () => {100 - 2}
+450  avail
+451  val s = System.currentTimeMillis
+452  val e = System.currentTimeMillis
+453  s - e
+454  e -s 
+455  s > e
+456  e > s
+457  (e) > (s)
+458  val users = Array(1, 2, 3,4,5)
+459  users(1)
+460  users(0)
+461  import java.util.Calendar
+462  val now = Calendar.getInstance
+463  now.YEAR
+464  import java.util.Calendar._
+465  import java.util.Calendar
+466  val now = Calendar.getInstance
+467  now.YEAR
+468  now.get(Calendar.HOUR_OF_DAY)
+469  (name: String) => (println(name))
+470  ("murali")
+471  res35
+472  res35("good")
+473  ("good")
+474  (name: String) => (println(name.replaceAll("o", "0")))
+475  res40("good")
+476  val add = (x: Int, y: Int) => x + y
+477  add(3,4)
+478  val numbers = List(1,2,3,4,5,6,7,8,9,10)
+479  val odd = (x: Int): Boolean => x % 2 == 0
+480  val even = (x: Int): Boolean => x % 2 == 0
+481  val even = (x: Int) => x % 2 == 0
+482  19 % 2 == 0
+483  numbers.filter(even)
+484  val names = Map(1 -> "murali", 2 -> "venu", 3 -> "vaishali", 4 -> "veera")
+485  val test: String = null
+486  import java.lang.String
+487  val fil = (name: String) => name.startsWith("v")
+488  names.filter(fil)
+489  val fil = (id: Int, name: String) => name.startsWith("v")
+490  names.filter(fil)
+491  val numbers = List(1,2,3,4,5,6,7,8,9,10)
+492  val even = (x: Int) => x % 2 == 0
+493  names.filter(fil)
+494  val numbers = List(1,2,3,4,5,6,7,8,9,10)
+495  val even = (x: Int) => x % 2 == 0
+496  numbers.filter(even)
+497  numbers
+498  val names = Map(1 -> "murali", 2 -> "venu", 3 -> "vaishali", 4 -> "veera")
+499  val fil = (id: Int, name: String) => name.startsWith("v")
+500  names.filter(fil)
+501  case class User(name: String, age: Int)
+502  val users = List(User("murali", 30), User("venu", 60), User("raji", 55), User("lachu", 26) )
+503  val agedUsers = (user: User) => user.age > 50
+504  users.filter(agedUsers)
+505  val youngUsers = (user: User) => user.age < 40
+506  users.filter(youngUsers)
+507  import scala.collection.mutable.Map
+508  val users = Map(1 -> "murali", 2 -> "venu")
+509  users += 3 -> "test"
+510  users.remove(3)
+511  users
+512  users.toMap
+513  val users = Map[Int, String]
+514  val users = Map[Int, String]()
+515  users += 1 -> "murali"
+516  users += 2 -> "venu"
+517  users += 3 -> "raji"
+518  users.toMap
+519  users += 10 -> "test"
+520  users.remove(10)
+521  users
+522  users.toMap
+523  val users = Map(10 -> "murali", 12 -> "lachu", 20 -> "venu", 21 -> "raji")
+524  val fil = (sn: Int, name: String) => sn > 10 && sn < 20
+525  users.filter(fil)
+526  def print((x: Int, y: Int)) = { println }
+527  def print(tp: Tuple2) = { println(tp) }
+528  import scala.Tuple2
+529  def print(tp: Tuple2) = { println(tp) }
+530  def get = { (1,2) }
+531  1 to 10
+532  1 to 10 toList
+533  def name = "murali" | "venu"
+534  val users = Map(10 -> "murali", 12 -> "lachu", 20 -> "venu", 21 -> "raji")
+535  val fil = (sn: Int, name: String) => sn > 10 && sn < 20
+536  users.filter(fil)
+537  (1, "murali")
+538  res4
+539  ((1, "murali"))
+540  xs(2)
+541  1 :: List(2,3)
+542  val ns = List(1,2)
+543  val ns1 = ns :: 4
+544  val ns1 = 4 :: ns
+545  import scala.collection.mutable.LinkedList
+546  val ls = LinkedList()
+547  ls += 1
+548  val ls = LinkedList[Int]()
+549  ls += 1
+550  ls.:+(1)
+551  ls.:+(2)
+552  import scala.collection.mutable.Map
+553  val mp = Map[Int, Int]()
+554  mp += 1 -> 100
+555  mp += 2 -> 101
+556  val one = mp += 3 -> 102
+557  val two = mp += 4 -> 103
+558  mp.type
+559  val ls = List(0,1,2,3,4,5,6,7,8,9)
+560  ls reduceLeft {_ + _}
+561  val ls = List(1,2,3,4,5,6,7,8,9,10)
+562  ls reduceLeft {_ + _}
+563  val factor = 3
+564  val additioner = (i: Int) => i + factor
+565  ls map additioner
+566  ls1 = ls.:: 11
+567  ls1 = 11 :: ls
+568  ls
+569  val ls1 = 11 :: ls
+570  val ls2 = ls1.:: 12
+571  val nums = List(1,2,3,4,5,6,7,8,9,10)
+572  nums++
+573  val one = List(1,2,3)
+574  val two = List(4,5,6)
+575  val three = one ++ two
+576  val three = one ++: two
+577  val three = two ++ one
+578  val three = two ++: one
+579  import scala.collection.mutable.LinkedList
+580  val four = LinkedList(7,8,9)
+581  val five = one ++ four
+582  val five = one ++: four
+583  val five = four ++: one
+584  val five = one ++: two
+585  val five = one ++: four
+586  val three = 1 +: two
+587  two +: 1
+588  val three = two +: 1
+589  val three = 1 +: two
+590  val three = 1 :+ two
+591  val three = two :+ 1
+592  val three = one ++ two
+593  val three = one ::: two
+594  val b = three :\ 5
+595  val b = three :\ 5 (_+_)
+596  val b = (three :\ 5) (_+_)
+597  val b = (three :\ 5)
+598  val b = (three :\ 5) (+)
+599  val b = (three :\ 5) (_+_)
+600  three
+601  val s = three addString(y)
+602  var str: StringBuilder = _
+603  val s = three addString(str)
+604  var str: StringBuilder = StringBuilder()
+605  val numbers = (1 to 10 ) toList
+606  val even = (x: Int) => x % 2 == 0
+607  numbers.filter(even)
+608  val numbers = (1 to 10 ) toList
+609  val even = (x: Int) => x % 2 == 0
+610  numbers.filter(even)
+611  val numbers = (1 to 10 ) 
+612  val numbers = (1 to 10 ) step 2
+613  val three = 1 +: two
+614  three contains 4
+615  three contains 3
+616  val ten = (1 to 10) toList
+617  val mid = (4 to 7) toSeq
+618  val mid = (4 to 7) toList
+619  mid toSeq
+620  val mid = (4 to 7) toSeq
+621  val mid = (4 to 7) toList toSeq
+622  val midS = mid toSeq
+623  val midS = mid.toSeq
+624  mid toSeq
+625  mid
+626  mid toSeq
+627  ten containsSlice mid
+628  mid1 = (11 to 15) toSeq
+629  val mid1 = (11 to 15) toSeq
+630  ten containsSlice mid1
+631  val twenty = (1 to 10) toList ::: ten
+632  val twenty = (1 to 10) toList :: ten
+633  val twenty = (1 to 10) toList ::: ten
+634  val twenty = (1 to 10) toList +: ten
+635  val twenty = (1 to 10) toList ++ ten
+636  val twenty = (1 to 10) toList ++: ten
+637  val twenty = (1 to 10) toList
+638  val twenty = (1 to 10) toList ++ ten
+639  val twenty = ten ++ (1 to 10) toList 
+640  val dis = twenty distinct
+641  twenty indices
+642  ten max
+643  twenty max
+644  ten toSeq
+645  number filter even
+646  numbers filter even
+647  numbers notFilter even
+648  numbers filterNot even
+649  val map = Map(1 -> "murali", 2 -> "venugopal", 3 -> "lachu", 4 -> "raji", 5 -> "sakthi", 6 -> "shadhvi")
+650  map
+651  map get 2
+652  map get 2 get
+653  map contains 1
+654  map contains 5
+655  map contains 7
+656  val i = (k,v) => v.contains("i")
+657  val i = (k: Int,v: String) => v.contains("i")
+658  map filter i
+659  map map { println _ }
+660  val family = Map(1 -> "murali", 2 -> "venugopal", 3 -> "lachu", 4 -> "raji", 5 -> "sakthi", 6 -> "shadhvi")
+661  family foreach {println _}
+662  family map { member => (member._1.toString, member._2)}
+663  family map { member => member._1.toString, member._2}
+664  val i = ((k: Int,v: String)) => v.contains("i")
+665  family map { member => member._1.toString, member._2}
+666  family map { member => (member._1.toString, member._2)}
+667  family
+668  import scala.collection.immutable.Map
+669  val family = Map(1 -> "murali", 2 -> "venugopal", 3 -> "lachu", 4 -> "raji", 5 -> "sakthi", 6 -> "shadhvi")
+670  family map { member => (member._1.toString, member._2)}
+671  numbers
+672  numbers filter even
+673  numbers count even
+674  numbers count odd
+675  numbers count !odd
+676  numbers count(!odd)
+677  numbers count odd
+678  numbers count(odd)
+679  numbers count even
+680  def factorial(i: BigInt): BigInt = i match {
+681  case _ if i == 1 => i
+682  case _ => i * factorial(i - 1)
+683  }
+684  for (i <- 1 to 1000)
+685  format("%s",i)
+686  for (i <- 1 to 10)
+687  println(i)
+688  for (i <- 1 to 10)
+689  println(format("--%s--",i))
+690  for (i <- 1 to 1000)
+691  println(format("%s: %s",i,factorial(i)))
+692  for (i <- 1 to 1000)
+693  println(format("%s: %s",i,factorial(i)))
+694  for (i <- 1 to 10000)
+695  println(format("%s: %s",i,factorial(i)))
+696  for (i <- 1 to 1000)
+697  println(format("%s: %s",i,factorial(i)))
+698  def factorial(i: BigInt): BigInt = i match {
+699  case _ if i == 1 => i
+700  case _ => i * factorial(i - 1)
+701  }
+702  for (i <- 1 to 1000)
+703  println(format("%s: %s",i,factorial(i)))
+704  :help
+705  :history
+706  :power
+707  :help
+708  :paste
+709  def factorial(i: BigInt): BigInt = {
+710  def fact(i: BigInt, accumulator: BigInt): BigInt = i match {
+711  case _ if i == 1 => accumulator
+712  case _ => fact(i - 1, i * accumulator)
+713  }
+714  fact(i, 1)
+715  }
+716  for (i <- 1 to 1000)
+717  println(format("%s: %s",i,factorial(i)))
+718  :help
+719  for (i <- 1 to 1000)
+720  println(format("%s: %s",i,factorial(i)))
+721  var s: String = ""
+722  for (i <- 1 to 1000)
+723  s += format("%s: %s",i,factorial(i))
+724  s
+725  for (i <- 1 to 10000)
+726  s += format("%s: %s",i,factorial(i))
+727  import scala.io.Source.fromFile
+728  val det = fromFile("/tmp/xmldata.xml")
+729  val det = fromFile("/tmp/xmldata.xml").mkstring
+730  val det = fromFile("/tmp/xmldata.xml")
+731  det
+732  import java.io.File
+733  val details = new File("/tmp/xmldata.xml")
+734  val details = XML.loadFile(new File("/tmp/xmldata.xml"))
+735  import scala.xml.XML
+736  val details = XML.loadFile(new File("/tmp/xmldata.xml"))
+737  val ips = details \ "RIMP" \ "INFRA2" \ "BLADES" \ "BLACE" \ "MGMTIPADDR"
+738  IPS
+739  ips
+740  ips foreach println
+741  ips.length
+742  val ips = details \ "INFRA2" \ "BLADES" \ "BLACE" \ "MGMTIPADDR"
+743  ips.length
+744  val ips = details \ "INFRA2" \ "BLADES" \ "BLACE" \ "MGMTIPADDR"
+745  val ips = details \ "RIMP" \ "INFRA2" \ "BLADES" \ "BLACE" \ "MGMTIPADDR"
+746  ips.length
+747  val ips = details \ "RIMP" \ "INFRA2" \ "BLADES" \ "BLACE" \ "MGMTIPADDR"
+748  val persons = XML.loadFile(new File("/tmp/text.xml"))
+749  val persons = XML.loadFile(new File("/tmp/test.xml"))
+750  val names = persons \ "person" \ "name"
+751  val names = persons \ "persons" \ "person" \ "name"
+752  val ips = details \ "RIMP" \ "INFRA2" \ "BLADES" \ "BLACE" \ "MGMTIPADDR"
+753  val ips = details \ "INFRA2" \ "BLADES" \ "BLACE" \ "MGMTIPADDR"
+754  val ips = details \ "INFRA2" \ "BLADES" \ "BLADE" \ "MGMTIPADDR"
+755  val ips = details \ "INFRA2" \ "BLADES" \ "BLADE" \ "MGMTIPADDR" @value
+756  val ips = details \ "INFRA2" \ "BLADES" \ "BLADE" \ "MGMTIPADDR" @values
+757  val ips = details \ "INFRA2" \ "BLADES" \ "BLADE" \ "MGMTIPADDR" @ values
+758  val ips = details \ "INFRA2" \ "BLADES" \ "BLADE" \ "MGMTIPADDR" {values}
+759  val ips = details \ "INFRA2" \ "BLADES" \ "BLADE" \ "MGMTIPADDR" {value}
+760  val ips = details \ "INFRA2" \ "BLADES" \ "BLADE" \ "MGMTIPADDR" text
+761  val ips = details \ "INFRA2" \ "BLADES" \ "BLADE" \ "MGMTIPADDR" text toSeq
+762  val ips = details \ "INFRA2" \ "BLADES" \ "BLADE" \ "MGMTIPADDR" text map
+763  val ips = details \ "INFRA2" \ "BLADES" \ "BLADE" \ "MGMTIPADDR" text map (ip => ip)
+764  val ips = details \ "INFRA2" \ "BLADES" \ "BLADE" \ "MGMTIPADDR".text
+765  val ips = details \ "INFRA2" \ "BLADES" \ "BLADE" \ "MGMTIPADDR" text
+766  val ips = (details \ "INFRA2" \ "BLADES" \ "BLADE" \ "MGMTIPADDR").text
+767  val ips = (details \ "INFRA2" \ "BLADES" \ "BLADE" \ "MGMTIPADDR").text.map (ip => ip)
+768  val ips = details \ "INFRA2" \ "BLADES" \ "BLADE" 
+769  val ips = details \ "INFRA2" \ "BLADES" \ "BLADE" \ "cUUID"
+770  val ips = details \ "INFRA2" \ "BLADES" \ "BLADE"
+771  val blades = details \ "INFRA2" \ "BLADES" \ "BLADE"
+772  blades foreach println
+773  blades foreach (blade => println(blade \ "MGMTIPADDR" text) )
+774  blades foreach (blade => println(blade \ "MGMTIPADDR" text); println(blade \ "cUUID" text) )
+775  blades foreach (blade => println(blade \ "MGMTIPADDR" text); println(blade \ "cUUID" text))
+776  blades foreach (blade => println(blade \ "MGMTIPADDR" text); println(blade \ "cUUID" text);)
+777  blades foreach (blade => println(blade \ "MGMTIPADDR" text); println(blade \ "cUUID" text));
+778  blades foreach (blade => println(blade \ "MGMTIPADDR" text); println(blade \ "cUUID" text))
+779  val details = XML.load("http://119.227.201.66/xmldata?item=all")
+780  val blades = details \ "INFRA2" \ "BLADES" \ "BLADE"
+781  blades foreach (blade => println(blade \ "MGMTIPADDR" text))
+782  val name = "New Virtual machine"
+783  name.trim
+784  name.replaceAll(" ", "")
+785  blades foreach (blade => println(blade \ "MGMTIPADDR" text))
+786  blades
+787  blades(0)
+788  val name = blades(0) \ "MGMTDNSNAME" text
+789  println(name)
+790  val persons = Map[String, String]()
+791  persons += "murali" -> "age"
+792  import scala.util.matching.Regex
+793  val pattern = "[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}".r
+794  import scala.io.Source.fromFile
+795  val str = fromFile("/tmp/vms_state.txt").mkstring
+796  val str = fromFile("/tmp/vms_state.txt")
+797  fromFile("/tmp/vms_state.txt")
+798  fromFile("/tmp/vms_state.txt").mkString
+799  val vms = fromFile("/tmp/vms_state.txt").mkString
+800  pattern.findAllMatchIn(vms)
+801  val pattern = "[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}".r
+802  val pattern = "CENTOS-[0-9]{-}"
+803  pattern.findAllMatchIn(vms)
+804  pattern
+805  val pattern = "CENTOS-[0-9]{-}".r
+806  val pattern = "CENTOS-[0-9]{4}".r
+807  val pattern = "CENTOS-[0-9]{1}".r
+808  pattern findFirstin vms
+809  pattern findFirstIn vms
+810  val pattern = "([0-9a-f])".r
+811  pattern findFirstIn vms
+812  res7.get
+813  pattern.findAllMatchIn(vms)
+814  res9
+815  val pattern = "vms".r
+816  pattern.findAllMatchIn(vms)
+817  val vms
+818  ;
+819  vms
+820  val pattern = "VPI*".r
+821  pattern.findAllMatchIn(vms)
+822  val pattern = "([0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12})".r
+823  pattern.findFirstMatchIn(vms)
+824  pattern.findAllIn(vms)
+825  pattern.findAllMatchIn(vms)
+826  pattern.findFirstMatchIn(vms)
+827  pattern.findAllMatchIn(vms)
+828  pattern.findFirstMatchIn(vms)
+829  vms foreach println
+830  pattern.findFirstMatchIn(vms)
+831  pattern.findAllMatchIn(vms)
+832  pattern
+833  pattern.findFirstMatchIn(vms)
+834  pattern.findFirstMatchIn(vms).nonEmpty
+835  val vmname = "vse-12345 (1285976d-249b-4d4a-8104-4296cb3eb765)"
+836  vmname.subString(vmname.find("("))
+837  vmname.substring(vmname.find("("))
+838  vmname.substring(vmname.find("\("))
+839  vmname.substring(vmname.find("("))
+840  vmname.indexOf("(")
+841  vmname.substring(vmname.indexOf("("))
+842  vmname.substring(0, indexOf}("("))
+843  vmname.substring(0, indexOf("("))
+844  vmname
+845  vmname.substring(0,3)
+846  vmname.indexOf("(")
+847  vmname.substring(0,vmname.indexOf("("))
+848  val name = vmname.substring(0,vmname.indexOf("("))
+849  pattern.findFirstMatchIn(vms).nonEmpty
+850  pattern.findFirstMatchIn(vms)
+851  pattern.findFirstMatchIn(vms).toString
+852  pattern.findFirstMatchIn(vms).get
+853  pattern.findFirstMatchIn(vms).get.toString
+854  import scala.collection.mutable.HashMap
+855  val map = HashMap[String, Tuple2(String, String)]
+856  val map = HashMap[String, Tuple2[String, String]]
+857  val tup: Tuple2(Int, String) = (1, "murali")
+858  val map = Map(1 -> (30, "murali"), 2 -> (26, "sakthi"), 3 -> (1, "shadhvi"))
+859  map.find(2)
+860  map.get(2)
+861  val map = HashMap[Int, (Int, String)]()
+862  val map = Map[Int, (Int, String)]()
+863  import scala.collection.mutable.Map
+864  val map = Map[Int, (Int, String)]()
+865  map += 1 -> (30, "murali")
+866  map += 2 -> (26, "sakthi")
+867  map += 3 -> (1, "shadhvi")
+868  map += 4 -> (0, "thangachi papa")
+869  map.size
+870  val map = Map[Int, (String, String)]()
+871  val map = Map[String, (String, String)]()
+872  map += "fq3w4fgdasfadsf" -> "vmname", "nothing"
+873  map += "fq3w4fgdasfadsf" -> ("vmname", "nothing")
+874  map._1
+875  map.get("fq3w4fgdasfadsf")
+876  map.get("fq3w4fgdasfadsf").get
+877  map.get("fq3w4fgdasfadsf").get._1
+878  map.get("fq3w4fgdasfadsf").get._2
+879  map += "grasdfgasdfew" -> ("vmname1", "community")
+880  map foreach { m => println(m.)
+881  map foreach { m => println(m)
+882  }
+883  map foreach { m => println(m)}
+884  map foreach { m => println(m._1)}
+885  map foreach { m => println(m._2)}
+886  map foreach { m => println(m._2._1)}
+887  map foreach { m => println(m._2._2)}
+888  map.find("grasdfgasdfew")
+889  map.contains("grasdfgasdfew")
+890  map.contains("grasdfgasdfew2")
+891  val oneToNine = (0-9) toList
+892  val oneToNine = (0-9) 
+893  val oneToNine = 0 to 9 toList
+894  oneToNine.length
+895  for (0 to 9) println
+896  for (0 to 9) {
+897  for (i -> 0 to 9) (println i)
+898  for (i -> 0 to 9) {println i}
+899  for (i -> 0 to 9) {
+900  for (i <- 0 to 9) {
+901  for (i <- 0 to 9) { println i }
+902  for (i <- 0 to 9) { println(i) }
+903  for (i <- 0 to 9; j <- 10 to 19) { println(i,j) }
+904  for (i <- 0 to 9) { println(i) }
+905  val twenty = 20
+906  for (i <- 0 to twenty) { println(i) }
+907  val onel = 0 to 5 toList
+908  val twol = 0 to 3 toList
+909  for (o <- onel; t <- twol) { println(o + " x " + t + " = " + o * t)
+910  }
+911  for (o <- onel; t <- twol) { println(o + " x " + t + " = " + o * t) }
+912  trait Philosophical {
+913  def philosophize() = {
+914  println("i consume meory")
+915  }
+916  class Frog extends Philosophical {
+917  override def toSring = "green"
+918  }
+919  class Frog extends Philosophical {
+920  override def toString = "green"
+921  }
+922  Philosophical
+923  val frog = New Frog
+924  val frog = new Frog
+925  frog.philosophize
+926  frog.toString
+927  frog
+928  ing a abstract class should implement the abstract methods
+929  an implemented method in abstract class can be overridden
+930  all the methods in a clas
+931  help
+932  :help
+933  :paste
+934  trait person
+935  trait family
+936  class family with person {
+937  def toString = {println("person of family")}
+938  }
+939  :paste
+940  :p
+941  !:
+942  !:p
+943  !
+944  val murali = "name"
+945  sh ls
+946  :sh ls
+947  :sh
+948  :type
+949  :warnings
+950  :paste
+951  val list = 0 to 10 toList
+952  val list = 0 to 10 toList()
+953  val list = 0 to 10 toList(3)
+954  val list = 0 to 10 toList(6)
+955  val list = 0 to 10 toList
+956  val list = 0 to 10 toList(0-6)
+957  val list = 0 to 10 toList(4)
+958  val list = 0 to 10 toList()
+959  val list = 0 to 10 toList
+960  def checkOdd = () => _ % 2 == 0
+961  :history
+962  :history > /tmp/his.txt
+963  :ls /tmp/
+964  :sh ls /tmp/
+965  :help
+966  def checkOdd = (i: Int) => i % 2 == 0
+967  list.filter(checkOdd)
+968  :edit
+969  :replay
+970  :power
+971  :help
+972  :phase
+973  :phase clear
+974  :power
+975  exit
