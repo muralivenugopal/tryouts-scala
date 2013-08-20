@@ -1,0 +1,7 @@
+multiple paramter list
+scala bounds
+	- context bound
+	- view bound
+righ arrow
+implicit paramters
+for loop variables
