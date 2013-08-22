@@ -974,3 +974,164 @@ scala> :history 1000
 973  :phase clear
 974  :power
 975  exit
+976  :history
+977  :history 1000
+978  :history 10000
+979  :help
+980  exit
+981  :history 1000
+982  :reset
+983  :history
+984  :replay
+985  :help
+986  :imports
+987  :quit
+988  :help
+989  :h? filter
+990  :h? agedusers
+991  import scala.collection.mutable.Map
+992  val map = (1 -> "murali", 2 -> "venugopal")
+993  map.remove(3)
+994  map.remove(1)
+995  val map = (1 -> "murali", 2 -> "venugopal")
+996  import scala.collection.mutable.Map
+997  val map = (1 -> "murali", 2 -> "venugopal")
+998  map
+999  map.size
+1000  map.length
+1001  map._1
+1002  val map = Map[Int, String]
+1003  val map = Map[Int, String]()
+1004  map += 1 -> "murali"
+1005  map += 2 -> "venugopal"
+1006  map
+1007  map.remove(3)
+1008  map.remove(3).get
+1009  def print(printMe: Array[T]) = { printMe foreach println)
+1010  def print(printMe: Array[T]) = { printMe foreach println}
+1011  def print(printMe: Array[Int]) = { printMe foreach println)
+1012  def print(printMe: Array[Int]) = { printMe foreach println}
+1013  val array = Array(1,2,3)
+1014  print(array)
+1015  def prints(printMe: Seq[Int]) = { printMe foreach println}
+1016  print(array)
+1017  def test[T](array: Array[T]) = { array foreach println }
+1018  test(array)
+1019  val names = Array("murali", "venu", "gopal")
+1020  test(names)
+1021  def echo(args: String*) = { args foreach println }
+1022  echo("murali", "venu", "gopal")
+1023  def echob(args: String*, argi: Int*) = { args foreach println }
+1024  val fun = (x: Int) => x * 2
+1025  fun(3)
+1026  val p = (x: Int) = x % 2 == 0
+1027  val p = (x: Int) => x % 2 == 0
+1028  0 to 10
+1029  0 to 10.toList
+1030  val nums = (0 to 10).toList
+1031  nums.filter(p)
+1032  val fun: Double => Double = (x: Double) => x * 2
+1033  val fun = (x: Double) => x * 2
+1034  val fun: Double => Double = (x: Double) => x * 2
+1035  fun(10)
+1036  val one: Int = Int
+1037  val one: Int => Int 
+1038  val one: Int => Int = (x:Int) => x * 2
+1039  one(2)
+1040  val one: Int => Int = x => x * 2
+1041  one(2)
+1042  val double: Int => Int = (x: Int) => x * 2
+1043  val twice(op: Int => Int, x: Int) => op(op(x))
+1044  val twice(op: Int => Int, x: Int) = op(op(x))
+1045  val twice(op: Int => Int, x: Int) => op(op(x))
+1046  val p = (x: Int) => x % 2 == 0
+1047  def prints(printMe: Seq[Int]) = { printMe foreach println}
+1048  val double: Int => Int = (x: Int) => x * 2
+1049  double(4)
+1050  val twice(op: Int => Int, x: Int) = op(op(x))
+1051  val twice(op: Int => Int, x: Int) => op(op(x))
+1052  def twice(op: Double => Double, x: Double) = op(op(x))
+1053  def twice(op: Int => Int, x: Int) = op(op(x))
+1054  twice(double, 2)
+1055  val l = (x: Int) => x * 2
+1056  l(3)
+1057  val l: Int => Int = (x: Int) => x * 2
+1058  l(4)
+1059  val ll: Int,Int => Int = (x: Int => Int, y: Int) => x(x(y))
+1060  val l: Int => Int = (x: Int) => x * 2
+1061  l(4)
+1062  def test(x: Int) = (x+2) { println(x) }
+1063  val one = 1
+1064  val ten = 10
+1065  for (one to 10) println 1
+1066  for (i <- one to 10) println i
+1067  for (i <- 1 to 10) println i
+1068  for (i <- 1 to 10) 
+1069  println i
+1070  for (i <- 1 to 10) printlni
+1071  var i = 0
+1072  for (i <- 1 to 10) printlni
+1073  for (i <- 1 to 10) println i
+1074  for (i <- 1 to 10) 
+1075  println i
+1076  var i = 0
+1077  for (i <- 1 to 10) 
+1078  println i
+1079  def fun(x: Int)(y: Int) = println(x+y)
+1080  fun(3,4)
+1081  fun(4)(2)
+1082  def fun(x: Int)(y: Int) = println( x * y )
+1083  fun(4)(2)
+1084  fun(5)(7)
+1085  :history
+1086  :help
+1087  :history 100
+1088  val double: Int => Int = (x: Int) => x * 2
+1089  double(3)
+1090  def twice(x: Int)(op: Int => Int) = op(x)
+1091  twice(2)(double)
+1092  def print(printMe: Array[T]) = { printMe foreach println}
+1093  def print(printMe: Array[Int]) = { printMe foreach println}
+1094  twice(2)(double)
+1095  implicit def v = 7
+1096  implicit var x = 10L
+1097  def pp(a:Int)(implicit i:Int) = println(a,i)
+1098  pp(3)
+1099  def one (x: Int)(y: Int) = x * y
+1100  one(3)(4)
+1101  def two (x: Int, y: Int)(i: Int, j: Int) = (y - x) / (j - i)
+1102  two(9,3)(4,2)
+1103  def speakImplicitly (implicit greeting : String) = println(greeting)
+1104  speakImplicitly("Goodbye world")
+1105  speakImplicitly
+1106  implicit val hello = "Hello Murali"
+1107  speakImplicitly
+1108  def speak(x: String)(implicit name: String) = println(x + " " + name)
+1109  def greet(x: String)(implicit name: String) = println(x + " " + name)
+1110  def greet("hello", "murali")
+1111  def greet("hello")("murali")
+1112  def greet(x: String)(implicit name: String) = println(x + " " + name)
+1113  greet("hello")("murali")
+1114  greet("hello")
+1115  implicit val me = "murali"
+1116  greet("hello")
+1117  greet("hello")("murali")
+1118  def greetList(implicit list: List[Any]) = list foreach println
+1119  val greets = List("hello", "murali")
+1120  implicit val greets = List("hello", "murali")
+1121  greetList
+1122  def greetTyped[T] (implicit x: T) = println(x)
+1123  implicit val foo = "murali"
+1124  greetType[String]
+1125  greetTyped[String]
+1126  :help
+1127  :reset
+1128  def greetTyped[T] (implicit x: T) = println(x)
+1129  implicit val foo = "murali"
+1130  greetTyped[String]
+1131  implicit val number = 5
+1132  greetTyped[String]
+1133  greetTyped[Int]
+1134  exit
+1135  :history 1000
+
