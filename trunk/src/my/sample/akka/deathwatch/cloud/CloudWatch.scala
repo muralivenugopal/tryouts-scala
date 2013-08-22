@@ -1,34 +1,37 @@
 package my.sample.akka.deathwatch.cloud
 
-import com.typesafe.config.ConfigFactory
-import akka.actor.ActorSystem
-import akka.actor.Actor
-import akka.event.LoggingReceive
-import scala.concurrent.duration.Duration._
-import java.io.FileWriter
-import java.util.Calendar
-import akka.actor.Props
-import akka.actor.actorRef2Scala
-import java.io.File
-import scala.concurrent.duration.Duration
-import akka.actor.OneForOneStrategy
-import akka.actor.SupervisorStrategy._
-import akka.dispatch.Resume
 import java.io.FileNotFoundException
+import scala.concurrent.duration.Duration
+import com.typesafe.config.ConfigFactory
+import akka.actor.Actor
+import akka.actor.ActorLogging
+import akka.actor.ActorRef
+import akka.actor.ActorSystem
+import akka.actor.OneForOneStrategy
+import akka.actor.PoisonPill
+import akka.actor.Props
+import akka.actor.SupervisorStrategy.Stop
+import akka.actor.actorRef2Scala
+import akka.event.LoggingReceive
+import akka.actor.Terminated
+import java.io.FileWriter
+import java.io.File
+import java.util.Calendar
 
 case class Start
 case class Write
+case class FileName(name: String)
 
-class Writer extends Actor {
+class Writer extends Actor with ActorLogging {
 
   import context.dispatcher
 
   var count = 0
-  val file = new File("/tmp/writer.log")
+  var file: File = _
   def receive = LoggingReceive {
     case Start => context.system.scheduler.schedule(Duration.Zero, Duration(2, "seconds"), self, Write)
-    case Write =>
-      count = count + 1; writeToFile(count)
+    case Write => count = count + 1; writeToFile(count)
+    case FileName(name: String) => file = new File(name) 
     case _ => println("Unknown Message")
   }
 
@@ -39,61 +42,42 @@ class Writer extends Actor {
   }
 }
 
-class ParentWriter extends Actor {
+class SuperWriter extends Actor with ActorLogging {
+
+  var writer: ActorRef = _
+  var remoteSuper: ActorRef = _
 
   override val supervisorStrategy =
     OneForOneStrategy(maxNrOfRetries = 5, withinTimeRange = Duration(10, "seconds")) {
-      case _: FileNotFoundException => Restart
-      case _: Exception => Escalate
+      case _: FileNotFoundException => self ! PoisonPill; Stop
     }
 
-  val writer = context.actorOf(Props[Writer], name = "writer")
-
   def receive = LoggingReceive {
-    case Start => writer ! Start
+    case Start =>
+      context.system.name match {
+        case "CloudPrimary" => println("Starting Writer"); startWriter
+
+        case "CloudBackup" =>
+          remoteSuper = context.actorFor("akka://CloudPrimary@210.210.125.149:2558/user/superw")
+          context.watch(remoteSuper)
+          println("Watching remoteSuper....")
+      }
+    case Terminated(remoteSuper) => println("Received Terminated message"); startWriter
     case _ => println
+  }
+  
+  def startWriter() = {
+      writer = context.actorOf(Props[Writer], name = "writer")
+      writer ! FileName("/tmp/" + context.system.name + ".log")
+      writer ! Start
   }
 }
 
-object CloudWatchSystem {
-  def main(args: Array[String]): Unit = {
+object CloudWatcher {
 
-    val config = ConfigFactory.parseString("""
-        BeaconSystem {
-        
-    		akka.loglevel = "DEBUG"
-    		akka.actor.debug {
-    			receive = on
-    			lifecycle = on
-    		}
-
-        	akka {
-        	  	actor {
-        	    	provider = "akka.remote.RemoteActorRefProvider"
-        	  	}
-        	remote
-        	 {
-        	    transport = "akka.remote.netty.NettyRemoteTransport"
-        	    netty {
-        	      hostname = "210.210.125.149"
-        	      port = 2552
-        	    }
-        	  }
-        	}
-        }
-        """)
-
-    val config1 = ConfigFactory.parseString("""
-    		akka.loglevel = "DEBUG"
-    		akka.actor.debug {
-    			receive = on
-    			lifecycle = on
-    		}
-    		""")
-
-    val system = ActorSystem("CloudWatch", config.getConfig("BeaconSystem"))
-    val parent = system.actorOf(Props[ParentWriter], name = "parent")
-    parent ! Start
+  def main(args: Array[String]) {
+    val system = ActorSystem(args(0), ConfigFactory.load().getConfig(args(0)))
+    val superw = system.actorOf(Props[SuperWriter], name = "superw")
+    superw ! Start
   }
-
 }
