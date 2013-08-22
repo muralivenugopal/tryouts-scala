@@ -43,7 +43,7 @@ class ParentWriter extends Actor {
 
   override val supervisorStrategy =
     OneForOneStrategy(maxNrOfRetries = 5, withinTimeRange = Duration(10, "seconds")) {
-      case _: FileNotFoundException => Restart 
+      case _: FileNotFoundException => Restart
       case _: Exception => Escalate
     }
 
@@ -58,6 +58,31 @@ class ParentWriter extends Actor {
 object CloudWatchSystem {
   def main(args: Array[String]): Unit = {
 
+    val config = ConfigFactory.parseString("""
+        BeaconSystem {
+        
+    		akka.loglevel = "DEBUG"
+    		akka.actor.debug {
+    			receive = on
+    			lifecycle = on
+    		}
+
+        	akka {
+        	  	actor {
+        	    	provider = "akka.remote.RemoteActorRefProvider"
+        	  	}
+        	remote
+        	 {
+        	    transport = "akka.remote.netty.NettyRemoteTransport"
+        	    netty {
+        	      hostname = "210.210.125.149"
+        	      port = 2552
+        	    }
+        	  }
+        	}
+        }
+        """)
+
     val config1 = ConfigFactory.parseString("""
     		akka.loglevel = "DEBUG"
     		akka.actor.debug {
@@ -66,7 +91,7 @@ object CloudWatchSystem {
     		}
     		""")
 
-    val system = ActorSystem("CloudWatch", config1)
+    val system = ActorSystem("CloudWatch", config.getConfig("BeaconSystem"))
     val parent = system.actorOf(Props[ParentWriter], name = "parent")
     parent ! Start
   }
