@@ -4,8 +4,8 @@ import akka.actor.Actor
 import akka.actor.ActorSystem
 import akka.actor.Props
 
-case class Start
-case class Stop
+case class Start()
+case class Stop()
 
 object MySystem {
 

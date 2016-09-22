@@ -7,7 +7,7 @@ import com.typesafe.config.ConfigFactory
 import akka.actor.Props
 import akka.actor.ActorRef
 
-case class Start
+case class Start()
 
 class Client extends Actor {
 

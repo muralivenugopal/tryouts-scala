@@ -12,9 +12,9 @@ import akka.kernel.Bootable
 import akka.remote.RemoteScope
 import akka.actor.AddressFromURIString
 
-case class Start
-case class Stop
-case class Undeploy
+case class Start()
+case class Stop()
+case class Undeploy()
 
 class client extends Actor {
 

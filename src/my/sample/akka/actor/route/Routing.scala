@@ -7,8 +7,8 @@ import akka.actor.actorRef2Scala
 import akka.routing.RoundRobinRouter
 import akka.routing.RandomRouter
 
-case class Start
-case class Stop
+case class Start()
+case class Stop()
 
 object Routing {
 

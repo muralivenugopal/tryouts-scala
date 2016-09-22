@@ -1,6 +1,7 @@
 package my.sample.xml
 
 import scala.xml.Attribute
+
 import scala.xml.Text
 import scala.xml.MetaData
 import scala.xml.UnprefixedAttribute

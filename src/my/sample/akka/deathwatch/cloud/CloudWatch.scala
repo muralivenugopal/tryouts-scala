@@ -18,8 +18,8 @@ import java.io.FileWriter
 import java.io.File
 import java.util.Calendar
 
-case class Start
-case class Write
+case class Start()
+case class Write()
 case class FileName(name: String)
 
 class Writer extends Actor with ActorLogging {

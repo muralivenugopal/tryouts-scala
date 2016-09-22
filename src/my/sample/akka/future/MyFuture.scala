@@ -6,8 +6,8 @@ import akka.actor.Props
 import akka.actor.actorRef2Scala
 import akka.pattern.ask
 
-case class Start
-case class Stop
+case class Start()
+case class Stop()
 
 object MyFuture {
 

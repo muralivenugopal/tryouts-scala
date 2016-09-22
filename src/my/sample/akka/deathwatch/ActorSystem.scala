@@ -12,10 +12,10 @@ import scala.concurrent.duration.FiniteDuration
 import java.util.concurrent.TimeUnit
 import scala.concurrent.duration._
 
-case class Write
-case class Hi
-case class Hello
-case class Sleep
+case class Write()
+case class Hi()
+case class Hello()
+case class Sleep()
 
 object MySystem {
 

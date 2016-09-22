@@ -4,8 +4,8 @@ import akka.actor.Actor
 
 object Main {
   
-  case class PING
-  case class PONG
+  case class PING()
+  case class PONG()
  
 /*  class Pinger extends Actor {
       

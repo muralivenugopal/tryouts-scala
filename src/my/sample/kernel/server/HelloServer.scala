@@ -6,7 +6,7 @@ import akka.kernel.Bootable
 import akka.actor.Actor
 import akka.actor.Props
 
-case class test
+case class test()
 
 class Server extends Actor {
   def receive = {

@@ -5,7 +5,7 @@ import akka.actor.ActorSystem
 import akka.actor.Props
 import akka.actor.Actor
 
-case class Start
+case class Start()
 
 class HelloActor extends Actor {
   val worldActor = context.actorOf(Props[WorldActor])
